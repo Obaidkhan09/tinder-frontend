@@ -1,0 +1,28 @@
+.swipeButtons {
+    position: fixed;
+    bottom: 3vh;
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    margin: 20px 0px;
+}
+.swipeButtons .MuiIconButton-root {
+    background-color: white;
+    box-shadow: 0px 5px 20px 0px rgb(0, 0, 0, 0.3);
+    margin: 18px 0px;
+}
+.replayButton {
+    color: #fff065;
+}
+.closeButton {
+    color: #ff4946;
+}
+.starButton {
+    color: #66bb6a;
+}
+.heartButton {
+    color : #f06292;
+}
+.flashButton {
+    color : #64b5f6;
+}

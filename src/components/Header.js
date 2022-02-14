@@ -4,8 +4,8 @@ import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined
 import IconButton from '@mui/material/IconButton';
 import MapsUgcRoundedIcon from '@mui/icons-material/MapsUgcRounded';
 
-import logo from "../assets/logo.png"
-import "../styles/header.css"
+import logo from "../assets/images/logo.png"
+import "./styles/header.css"
 
 function Header() {
   return (
