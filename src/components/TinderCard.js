@@ -1,11 +1,23 @@
-import React, { useState } from 'react'
-
+import React, { useEffect, useState } from 'react'
+// import axios from "axios";
 import TinderCard from "react-tinder-card";
+import axios from "./constants/constants";
 
-import { people } from "./constants/constants";
 import "./styles/tinderCard.css"
+
 function TinderCardComp() {
-    const [person, setPerson] = useState(people);
+    const [person, setPerson] = useState([]);
+
+    useEffect (() => {
+        async function fetchData() {
+            const req = await axios.get("/tinder/cards");
+            setPerson(req.data);
+            // console.log(req);
+        }
+        fetchData();
+    }, []);
+
+
     const onSwipe = (direction) => {
         console.log('You swiped: ' + direction)
     }
@@ -25,7 +37,7 @@ function TinderCardComp() {
                         className="swipe"
                         >
                         <div style={{
-                            backgroundImage: `url(${item.url})`,
+                            backgroundImage: `url(${item.imageUrl})`,
                             color: "white",
                         }}
                             className="card"
