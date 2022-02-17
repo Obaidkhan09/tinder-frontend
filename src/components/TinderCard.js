@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 // import axios from "axios";
 import TinderCard from "react-tinder-card";
 import axios from "./constants/constants";
+import IconButton from '@mui/material/IconButton';
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 
 import "./styles/tinderCard.css"
 
@@ -16,7 +18,11 @@ function TinderCardComp() {
         }
         fetchData();
     }, []);
-
+    
+    const deleteItem = (id) => {
+        axios.delete(`tinder/cards/${id}`);
+        window.location.reload();
+    }
 
     const onSwipe = (direction) => {
         console.log('You swiped: ' + direction)
@@ -43,6 +49,9 @@ function TinderCardComp() {
                             className="card"
                         >
                             <h1>{item.name}</h1>
+                            <IconButton fontSize='large' className="btnn" key={index} onClick={()=>deleteItem(item._id)}>
+                                <HighlightOffIcon className='closeCircleButton' fontSize='large' />
+                            </IconButton>
                         </div>
                     </TinderCard>
                 ))}

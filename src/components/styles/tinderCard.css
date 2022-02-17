@@ -30,4 +30,12 @@
     bottom: 10px;
     background-color: rgb(203,187,173, 0.5);
     width: 100%;
+}.btnn {
+    position: absolute;
+    height: 60px;
+    width: 60px;
+    left: 45%;
+}
+.closeCircleButton {
+    color: white;
 }
