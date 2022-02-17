@@ -28,9 +28,9 @@ function TinderCardComp() {
     return (
         <div className='tinderCard'>
             <div className="tinderCard_container">
-                {person.map((item) => (
+                {person.map((item, index) => (
                     <TinderCard
-                        key={item.name}
+                        key={index}
                         onSwipe={onSwipe()}
                         onCardLeftScreen={() => onCardLeftScreen('fooBar')}
                         preventSwipe={['up', 'down']}
