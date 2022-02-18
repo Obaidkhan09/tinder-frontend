@@ -41,11 +41,11 @@ function Header() {
   const urlChange = (e) => {
     setUrl(e.target.value);
   }
-  const onSubmit = (e) => {
+  const onSubmit = async(e) => {
     e.preventDefault();
     if (name !== null && url !== null) {
 
-      axios.post("/tinder/cards",{
+      await axios.post("/tinder/cards",{
         "name" : name,
         "imageUrl" : url
       });
