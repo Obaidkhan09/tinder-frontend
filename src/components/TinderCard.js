@@ -10,18 +10,22 @@ import "./styles/tinderCard.css"
 function TinderCardComp() {
     const [person, setPerson] = useState([]);
 
-    useEffect (() => {
-        async function fetchData() {
-            const req = await axios.get("/tinder/cards");
-            setPerson(req.data);
-            // console.log(req);
-        }
+    async function fetchData() {
+        const req = await axios.get("/tinder/cards");
+        setPerson(req.data);
+        // console.log(req);
+    }
+
+    useEffect(() => {
         fetchData();
     }, []);
-    
-    const deleteItem = (id) => {
-        axios.delete(`tinder/cards/${id}`);
-        window.location.reload();
+
+    const deleteItem = async (id) => {
+        await axios.delete(`tinder/cards/${id}`)
+        .then(() =>{
+            fetchData();
+        })
+        // window.location.reload();
     }
 
     const onSwipe = (direction) => {
@@ -41,7 +45,7 @@ function TinderCardComp() {
                         onCardLeftScreen={() => onCardLeftScreen('fooBar')}
                         preventSwipe={['up', 'down']}
                         className="swipe"
-                        >
+                    >
                         <div style={{
                             backgroundImage: `url(${item.imageUrl})`,
                             color: "white",
@@ -49,7 +53,7 @@ function TinderCardComp() {
                             className="card"
                         >
                             <h1>{item.name}</h1>
-                            <IconButton fontSize='large' className="btnn" key={index} onClick={()=>deleteItem(item._id)}>
+                            <IconButton fontSize='large' className="btnn" key={index} onClick={() => deleteItem(item._id)}>
                                 <HighlightOffIcon className='closeCircleButton' fontSize='large' />
                             </IconButton>
                         </div>
